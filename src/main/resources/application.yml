@@ -1,0 +1,103 @@
+#jasypt:
+#  encryptor:
+#    # 加密算法
+#    algorithm: PBEWITHHMACSHA512ANDAES_256
+#    # 加密使用的盐
+#    password: abc
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://192.168.88.138:3308/test
+#    username: root
+#    # 使用ENC()包裹，标识为加密之后的，否则无法解密，会报错
+#    password: ENC(xf8ZncmcDn0Xrz1XPqmlaXWdy4hkwxZNB6U+rNkUynEtsv9tGHofu2Kc4vu7/wbm)
+
+
+
+# --------------------------------------------------------------
+#jasypt:
+#  encryptor:
+#    # 加密算法
+#    algorithm: PBEWITHHMACSHA512ANDAES_256
+#    # 加密使用的盐
+#    password: abc
+#    property:
+#      # 修改默认的前缀和后缀，如果自定义属性探测器，那么此项配置不起作用
+#      # prefix: ENC_(
+#      # suffix: )
+#      # 自定义的属性探测器，如果这个是自定义的，那么上述的前缀后缀不生效
+#      detector-bean: encryptablePropertyDetector
+#    # 自定义加解密类Bean名称
+#    bean: customEnc
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://192.168.88.138:3308/test
+#    username: root
+#    # 使用ENC()包裹，标识为加密之后的，否则无法解密，会报错
+#    # 自定义规则之后，使用ENC@开头
+#    password: ENC@No1Z9D0ktbk6YwcOqjpPK8UbGXetFA5elzjQkGM52XxMafeU8tOC4RfIC9H/nC3L
+
+# ---------------------------------------------------------------------------
+
+#jasypt:
+#  encryptor:
+#    # 加密算法
+#    algorithm: PBEWITHHMACSHA512ANDAES_256
+#    # 加密使用的盐
+#    password: abc
+#    property:
+#      # 修改默认的前缀和后缀，如果自定义属性探测器，那么此项配置不起作用
+#      # prefix: ENC_(
+#      # suffix: )
+#      # 自定义的属性探测器，如果这个是自定义的，那么上述的前缀后缀不生效
+#      detector-bean: encryptablePropertyDetector
+#      resolver-bean: encryptablePropertyResolver
+#    # 自定义加解密类Bean名称
+#    bean: customEnc
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://192.168.88.138:3308/test
+#    username: root
+#    # 使用ENC()包裹，标识为加密之后的，否则无法解密，会报错
+#    # 自定义规则之后，使用ENC@开头
+#    password: ENC@No1Z9D0ktbk6YwcOqjpPK8UbGXetFA5elzjQkGM52XxMafeU8tOC4RfIC9H/nC3L
+
+
+# -------------------------------------------------------------------
+
+jasypt:
+  encryptor:
+    # 加密算法
+    algorithm: PBEWITHHMACSHA512ANDAES_256
+    # 加密使用的盐
+    password: abc
+    property:
+      # 修改默认的前缀和后缀，如果自定义属性探测器，那么此项配置不起作用
+      # prefix: ENC_(
+      # suffix: )
+      # 自定义的属性探测器，如果这个是自定义的，那么上述的前缀后缀不生效
+      detector-bean: encryptablePropertyDetector
+      # 自定义解密逻辑类 如果配置了，默认的解析器将不工作
+      resolver-bean: encryptablePropertyResolver
+      # 过滤器的bean
+      filter-bean: encryptablePropertyFilter
+      # 过滤器配置，正则
+      filter:
+        # 默认包含的
+        include-names:
+        # 默认拦截的，默认拦截jasypt.encryptor的配置
+        exclude-names:
+          - ^jasypt\.encryptor\.*
+
+    # 自定义加解密类Bean名称
+    bean: customEnc
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.88.138:3308/test
+    username: root
+    # 使用ENC()包裹，标识为加密之后的，否则无法解密，会报错
+    # 自定义规则之后，使用ENC@开头
+    password: ENC@No1Z9D0ktbk6YwcOqjpPK8UbGXetFA5elzjQkGM52XxMafeU8tOC4RfIC9H/nC3L
